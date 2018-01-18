@@ -112,7 +112,7 @@
                                 title: v.Title,
                                 description: v.Description,
                                 start: moment(v.start),
-                                end: v.EndDate != null ? moment(v.end) : null,
+                                end: v.end != null ? moment(v.end) : null,
                                 color: v.Color,
                                 isfullday: v.IsFullDay
                             });
@@ -222,7 +222,7 @@
             });
             function openAddEditForm() {
                 if (selectedEvent != null) {
-                    $('#hdEventID').val(selectedEvent.Id);
+                    $('#hdEventID').val(selectedEvent.id);
                     $('#txtSubject').val(selectedEvent.title);
                     $('#txtStart').val(selectedEvent.start.format(dateFormat));
                     $('#chkIsFullDay').prop("checked", selectedEvent.isfullday || false);

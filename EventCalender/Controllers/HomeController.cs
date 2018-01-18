@@ -26,6 +26,9 @@ namespace EventCalender.Controllers
         [HttpPost]
         public JsonResult SaveEvent(Event newEvent)
         {
+            if (newEvent.IsFullDay)
+                newEvent.End = newEvent.Start;
+
             var status = false;
             DataBase.DataContext Db = new DataBase.DataContext();
             if (newEvent.Id > 0)
@@ -36,8 +39,8 @@ namespace EventCalender.Controllers
                 {
                     eventtoEdit.Title = newEvent.Title;
                     eventtoEdit.Start = newEvent.Start;
-                    eventtoEdit.End = newEvent.End;
                     eventtoEdit.Description = newEvent.Description;
+                    eventtoEdit.IsFullDay = newEvent.IsFullDay;
                 }
             }
             else
